@@ -2,7 +2,7 @@ import { describe, test, expect } from "vitest";
 import { mount } from "@vue/test-utils";
 import App from "@/App.vue";
 
-describe("App.vueのテスト", () => {
+describe("計算結果を表示する要素のテスト", () => {
   test("初期値での表示内容テスト", () => {
     // App.vueの擬似mount
     const wrapper = mount(App);
@@ -20,5 +20,20 @@ describe("App.vueのテスト", () => {
       const expected = "4";
       expect(actual).toBe(expected);
     };
+  });
+});
+
+describe("要素の表示・非表示のテスト", () => {
+  test("初期状態のテスト(v-if)", () => {
+    const wrapper = mount(App);
+    const actual = wrapper.find(`[data-testid="invisible-v-if"]`).exists();
+    const expected = false;
+    expect(actual).toBe(expected);
+  });
+  test("初期状態のテスト(v-show)", () => {
+    const wrapper = mount(App);
+    const actual = wrapper.find(`[data-testid="invisible-v-show"]`).isVisible();
+    const expected = false;
+    expect(actual).toBe(expected);
   });
 });
