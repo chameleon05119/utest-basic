@@ -36,4 +36,22 @@ describe("要素の表示・非表示のテスト", () => {
     const expected = false;
     expect(actual).toBe(expected);
   });
+  test("表示ボタンをクリックした際のテスト(v-if)", () => {
+    async () => {
+      const wrapper = mount(App);
+      await wrapper.get(`[data-testid="showButton"]`).trigger("click");
+      const actual = wrapper.find(`[data-testid="invivible-v-if"]`).exists();
+      const expected = true;
+      expect(actual).toBe(expected);
+    };
+  });
+  test("表示ボタンをクリックした際のテスト(v-show)", () => {
+    async () => {
+      const wrapper = mount(App);
+      await wrapper.get(`[data-testid="showButton"]`).trigger("click");
+      const actual = wrapper.find(`[data-testid="invivible-v-if"]`).isVisible();
+      const expected = true;
+      expect(actual).toBe(expected);
+    };
+  });
 });
