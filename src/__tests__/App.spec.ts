@@ -7,8 +7,8 @@ describe("App.vueのテスト", () => {
     // App.vueの擬似mount
     const wrapper = mount(App);
     // pタグ要素のレンダリング結果を取り出す
-    const actual = wrapper.get("p").text();
-    const expected = "6 ÷ 3 = 2";
+    const actual = wrapper.get(`[data-testid="ans"]`).text();
+    const expected = "2";
     expect(actual).toBe(expected);
   });
 });
